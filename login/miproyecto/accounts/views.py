@@ -29,7 +29,7 @@ def editar_usuario(request, usuario_id):
             formulario.save()  
             return redirect('usuarios')  
     else:
-        formulario = usuarioForm(instance=usuario)  
+        formulario = UsuarioForm(instance=usuario)  
     return render(request, 'usuarios/editar.html', {'formulario': formulario})
 
 def eliminar_usuario(request, usuario_id):
