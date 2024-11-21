@@ -7,8 +7,8 @@ class UsuarioForm(forms.ModelForm):
         model = Usuario
         fields = '__all__'
         widgets = {
-            'usuario_fecha': forms.DateInput(attrs={'type': 'date'}),
-            'usuario_hora': forms.TimeInput(attrs={'type': 'time'}),  #cambia el campo fecha a date.
+            #'usuario_fecha': forms.DateInput(attrs={'type': 'date'}),
+            #'usuario_hora': forms.TimeInput(attrs={'type': 'time'}),  #cambia el campo fecha a date.
             #'usuario_duracion': forms.NumberInput()
         }
 
@@ -17,5 +17,6 @@ class TicketForm(forms.ModelForm):
         model = Ticket
         fields = '__all__'
         widgets = {
-            'ticket_capacidad': forms.NumberInput(attrs={'type': 'number'}),
+            #'ticket_capacidad': forms.NumberInput(attrs={'type': 'number'}),
+            'ticket_fecha': forms.DateInput(attrs={'type': 'date'}),
         }

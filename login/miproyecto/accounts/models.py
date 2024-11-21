@@ -11,11 +11,6 @@ class Usuario(models.Model):
         fila = "Usuario: " + self.usuario_nombre_usuario + " || " + "ID: " + str(self.usuario_id) + " || " + "Rol: " + self.usuario_rol
         return fila
     
-    '''
-    def delete(self, using=None, keep_parents=False):
-        self.libro_imagen.storage.delete(self.libro_imagen.name)
-        super().delete()
-    '''
 
 
 class Ticket(models.Model):

@@ -9,6 +9,8 @@ from .forms import *
 def home(request):
     return render(request, 'home.html')
 
+
+
 # ----- USUARIOS -----
 def usuarios(request):
     usuarios = Usuario.objects.all()
