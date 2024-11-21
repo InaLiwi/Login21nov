@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'devscurico',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '10c7-200-91-9-175.ngrok-free.app',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
