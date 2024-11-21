@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %} reserva {% endblock %}
+{% block titulo %} ticket {% endblock %}
 
 {% block contenido %} 
 
 <div class="card mt-5">
     <div class="card-header">
-        <a name="" id="" class="btn" href="{% url 'crear_reserva' %}" role="button">
-            <i class="fas fa-plus"></i> Nueva reserva
+        <a name="" id="" class="btn" href="{% url 'crear_ticket' %}" role="button">
+            <i class="fas fa-plus"></i> Nueva ticket
         </a>
     </div>
     <div class="card-body">
@@ -15,7 +15,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID Reserva</th>
+                        <th scope="col">ID ticket</th>
                         <th scope="col">Sala</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Fecha</th>
@@ -24,19 +24,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for reserva in reservas %}
+                    {% for ticket in tickets %}
                     <tr class="">
-                        <td scope="row">{{ reserva.reserva_id }}</td>
-                        <td>{{ reserva.reserva_nombre_sala }}</td>
-                        <td>{{ reserva.reserva_nombre_usuario }}</td>
-                        <td>{{ reserva.reserva_fecha}}</td>
-                        <td>{{ reserva.reserva_hora}}</td>
-                        <td>{{ reserva.reserva_duracion}}</td>
+                        <td scope="row">{{ ticket.ticket_id }}</td>
+                        <td>{{ ticket.ticket_nombre_sala }}</td>
+                        <td>{{ ticket.ticket_nombre_usuario }}</td>
+                        <td>{{ ticket.ticket_fecha}}</td>
+                        <td>{{ ticket.ticket_hora}}</td>
+                        <td>{{ ticket.ticket_duracion}}</td>
                         <td>
-                            <a name="" id="" class="btn" href="{% url 'editar_reserva' reserva.reserva_id%}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'editar_ticket' ticket.ticket_id%}" role="button">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a name="" id="" class="btn" href="{% url 'eliminar_reserva' reserva.reserva_id %}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'eliminar_ticket' ticket.ticket_id %}" role="button">
                                 <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </td>
@@ -46,7 +46,7 @@
             </table>
         </div>
     </div>
-    <div class="card-footer text-muted">Todos los usuarios pueden añadir, ver, modificar y eliminar reservas</div>
+    <div class="card-footer text-muted"></div>
 </div>
 
 {% endblock %}

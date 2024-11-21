@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block titulo %} reserva {% endblock %}
+{% block titulo %} Usuarios {% endblock %}
 
 {% block contenido %} 
 
 <div class="card mt-5">
     <div class="card-header">
-        <a name="" id="" class="btn" href="{% url 'crear_reserva' %}" role="button">
-            <i class="fas fa-plus"></i> Nueva reserva
+        <a name="" id="" class="btn" href="{% url 'crear_usuario' %}" role="button">
+            <i class="fas fa-plus"></i> Nueva usuario
         </a>
     </div>
     <div class="card-body">
@@ -15,7 +15,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">ID Reserva</th>
+                        <th scope="col">ID usuario</th>
                         <th scope="col">Sala</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Fecha</th>
@@ -24,19 +24,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for reserva in reservas %}
+                    {% for usuario in usuarios %}
                     <tr class="">
-                        <td scope="row">{{ reserva.reserva_id }}</td>
-                        <td>{{ reserva.reserva_nombre_sala }}</td>
-                        <td>{{ reserva.reserva_nombre_usuario }}</td>
-                        <td>{{ reserva.reserva_fecha}}</td>
-                        <td>{{ reserva.reserva_hora}}</td>
-                        <td>{{ reserva.reserva_duracion}}</td>
+                        <td scope="row">{{ usuario.usuario_id }}</td>
+                        <td>{{ usuario.usuario_nombre_sala }}</td>
+                        <td>{{ usuario.usuario_nombre_usuario }}</td>
+                        <td>{{ usuario.usuario_fecha}}</td>
+                        <td>{{ usuario.usuario_hora}}</td>
+                        <td>{{ usuario.usuario_duracion}}</td>
                         <td>
-                            <a name="" id="" class="btn" href="{% url 'editar_reserva' reserva.reserva_id%}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'editar_usuario' usuario.usuario_id%}" role="button">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a name="" id="" class="btn" href="{% url 'eliminar_reserva' reserva.reserva_id %}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'eliminar_usuario' usuario.usuario_id %}" role="button">
                                 <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </td>
@@ -46,7 +46,7 @@
             </table>
         </div>
     </div>
-    <div class="card-footer text-muted">Todos los usuarios pueden añadir, ver, modificar y eliminar reservas</div>
+    <div class="card-footer text-muted">Todos los usuarios pueden añadir, ver, modificar y eliminar usuarios</div>
 </div>
 
 {% endblock %}
