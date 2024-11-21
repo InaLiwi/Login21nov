@@ -9,11 +9,11 @@ urlpatterns = [
 
     path('usuarios', views.usuarios, name='usuarios'),
     path('crear_usuario', views.crear_usuario, name='crear_usuario'),
-    path('editar_usuario/<int:usuario_id>', views.editar_usuario, name='editar_usuario'),
-    path('eliminar_usuario/<str:usuario_id>', views.eliminar_usuario, name='eliminar_usuario'),
+    path('editar_usuario/<str:usuario_nombre_usuario>', views.editar_usuario, name='editar_usuario'),
+    path('eliminar_usuario/<str:usuario_nombre_usuario>', views.eliminar_usuario, name='eliminar_usuario'),
 
     path('tickets', views.tickets, name='tickets'),
-    path('crear_ticket', views.crear_ticket, name='crear_ticket'),
+    path('tickets/crear', views.crear_ticket, name='crear_ticket'),
     path('editar_ticket/<str:ticket_id>', views.editar_ticket, name='editar_ticket'),
     path('eliminar_ticket/<str:ticket_id>', views.eliminar_ticket, name='eliminar_ticket'),
     

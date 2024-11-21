@@ -1,6 +1,6 @@
 <div class="card mt-5">
     <div class="card-header">
-        <h4>Formulario de Reserva</h4>
+        <h4>Formulario de Tickets</h4>
     </div>
     <div class="card-body">
         <form enctype="multipart/form-data" method="post" class="mt-3">
@@ -25,7 +25,7 @@
             {% endfor %}
             
             <div class="row justify-content-evenly">
-                <a class="btn col-3" href="{% url 'reservas' %}" role="button"> Cancelar </a>  
+                <a class="btn col-3" href="{% url 'tickets' %}" role="button"> Cancelar </a>  
                 <input class="btn col-3" type="reset" value="Borrar cambios"/>
                 <input class="btn col-3" type="submit" value="Guardar"/>
             </div>

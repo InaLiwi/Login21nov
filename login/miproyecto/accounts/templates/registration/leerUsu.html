@@ -23,14 +23,14 @@
                 <tbody>
                     {% for usuario in usuarios %}
                     <tr class="">
-                        <td scope="row">{{ usuario.usuario_id }}</td>
+                        <td scope="row">{{ usuario.usuario_nombre_usuario }}</td>
                         <td>{{ usuario.usuario_rol }}</td>
                         <td>{{ usuario.usuario_nombre_usuario }}</td>
                         <td>
-                            <a name="" id="" class="btn" href="{% url 'editar_usuario' usuario.usuario_id%}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'editar_usuario' usuario.usuario_nombre_usuario%}" role="button">
                                 <i class="fas fa-edit"></i> Editar
                             </a>
-                            <a name="" id="" class="btn" href="{% url 'eliminar_usuario' usuario.usuario_id %}" role="button">
+                            <a name="" id="" class="btn" href="{% url 'eliminar_usuario' usuario.usuario_nombre_usuario %}" role="button">
                                 <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </td>

@@ -23,8 +23,8 @@ def crear_usuario(request):
         return redirect('usuarios')
     return render(request, 'registration/crear.html', {'formulario':formulario})
 
-def editar_usuario(request, usuario_id):
-    usuario = get_object_or_404(Usuario, usuario_id=usuario_id)
+def editar_usuario(request, usuario_nombre_usuario):
+    usuario = get_object_or_404(Usuario, usuario_nombre_usuario=usuario_nombre_usuario)
     if request.method == 'POST':
         formulario = UsuarioForm(request.POST, request.FILES, instance=usuario)
         if formulario.is_valid():
@@ -34,8 +34,8 @@ def editar_usuario(request, usuario_id):
         formulario = UsuarioForm(instance=usuario)  
     return render(request, 'registration/editar.html', {'formulario': formulario})
 
-def eliminar_usuario(request, usuario_id):
-    usuario = Usuario.objects.get(usuario_id = usuario_id)
+def eliminar_usuario(request, usuario_nombre_usuario):
+    usuario = Usuario.objects.get(usuario_nombre_usuario = usuario_nombre_usuario)
     usuario.delete()
     return redirect('usuarios')
 

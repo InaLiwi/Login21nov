@@ -15,9 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Usuario',
             fields=[
-                ('usuario_id', models.AutoField(max_length=11, primary_key=True, serialize=False)),
                 ('usuario_rol', models.CharField(max_length=50, verbose_name='Especifique el rol: ')),
-                ('usuario_nombre_usuario', models.CharField(max_length=50, verbose_name='Nombre usuario')),
+                ('usuario_nombre_usuario', models.CharField(max_length=50, primary_key=True, verbose_name='Nombre usuario')),
             ],
         ),
         migrations.CreateModel(
