@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titulo %} reserva {% endblock %}
+
+{% block contenido %} 
+
+<div class="card mt-5">
+    <div class="card-header">
+        <a name="" id="" class="btn" href="{% url 'crear_reserva' %}" role="button">
+            <i class="fas fa-plus"></i> Nueva reserva
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">ID Reserva</th>
+                        <th scope="col">Sala</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Duración (hrs.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                    <tr class="">
+                        <td scope="row">{{ reserva.reserva_id }}</td>
+                        <td>{{ reserva.reserva_nombre_sala }}</td>
+                        <td>{{ reserva.reserva_nombre_usuario }}</td>
+                        <td>{{ reserva.reserva_fecha}}</td>
+                        <td>{{ reserva.reserva_hora}}</td>
+                        <td>{{ reserva.reserva_duracion}}</td>
+                        <td>
+                            <a name="" id="" class="btn" href="{% url 'editar_reserva' reserva.reserva_id%}" role="button">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a name="" id="" class="btn" href="{% url 'eliminar_reserva' reserva.reserva_id %}" role="button">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer text-muted">Todos los usuarios pueden añadir, ver, modificar y eliminar reservas</div>
+</div>
+
+{% endblock %}
