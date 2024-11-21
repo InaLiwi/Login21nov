@@ -16,22 +16,20 @@
                 <thead>
                     <tr>
                         <th scope="col">ID ticket</th>
-                        <th scope="col">Sala</th>
                         <th scope="col">Usuario</th>
                         <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Duración (hrs.)</th>
+                        <th scope="col">Prioridad</th>
+                        <th scope="col">Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for ticket in tickets %}
                     <tr class="">
                         <td scope="row">{{ ticket.ticket_id }}</td>
-                        <td>{{ ticket.ticket_nombre_sala }}</td>
-                        <td>{{ ticket.ticket_nombre_usuario }}</td>
+                        <td>{{ ticket.ticket_numero_cliente }}</td>
                         <td>{{ ticket.ticket_fecha}}</td>
-                        <td>{{ ticket.ticket_hora}}</td>
-                        <td>{{ ticket.ticket_duracion}}</td>
+                        <td>{{ ticket.ticket_prioridad}}</td>
+                        <td>{{ ticket.ticket_descripcion}}</td>
                         <td>
                             <a name="" id="" class="btn" href="{% url 'editar_ticket' ticket.ticket_id%}" role="button">
                                 <i class="fas fa-edit"></i> Editar

@@ -5,7 +5,7 @@ from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     # path(palabra_del_SLACH, FUNCION_DE_views, NOMBRE_PARA_LLAMAR_DESDE_EL_html)    
-    path('', views.inicio, name='inicio'),
+    path('', views.home, name='home'),
 
     path('usuarios', views.usuarios, name='usuarios'),
     path('crear_usuario', views.crear_usuario, name='crear_usuario'),

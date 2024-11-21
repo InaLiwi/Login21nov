@@ -12,14 +12,14 @@ def home(request):
 # ----- USUARIOS -----
 def usuarios(request):
     usuarios = Usuario.objects.all()
-    return render(request, 'usuarios/index.html', {'usuarios': usuarios})
+    return render(request, 'registration/leerUsu.html', {'usuarios': usuarios})
 
 def crear_usuario(request):
     formulario = UsuarioForm(request.POST or None, request.FILES or None)
     if formulario.is_valid():
         formulario.save()
         return redirect('usuarios')
-    return render(request, 'usuarios/crear.html', {'formulario':formulario})
+    return render(request, 'registration/crear.html', {'formulario':formulario})
 
 def editar_usuario(request, usuario_id):
     usuario = get_object_or_404(Usuario, usuario_id=usuario_id)
@@ -30,7 +30,7 @@ def editar_usuario(request, usuario_id):
             return redirect('usuarios')  
     else:
         formulario = UsuarioForm(instance=usuario)  
-    return render(request, 'usuarios/editar.html', {'formulario': formulario})
+    return render(request, 'registration/editar.html', {'formulario': formulario})
 
 def eliminar_usuario(request, usuario_id):
     usuario = Usuario.objects.get(usuario_id = usuario_id)
