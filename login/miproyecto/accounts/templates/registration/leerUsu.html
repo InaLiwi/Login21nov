@@ -16,22 +16,16 @@
                 <thead>
                     <tr>
                         <th scope="col">ID usuario</th>
-                        <th scope="col">Sala</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Hora</th>
-                        <th scope="col">Duración (hrs.)</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Nombre del usuario</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for usuario in usuarios %}
                     <tr class="">
                         <td scope="row">{{ usuario.usuario_id }}</td>
-                        <td>{{ usuario.usuario_nombre_sala }}</td>
+                        <td>{{ usuario.usuario_rol }}</td>
                         <td>{{ usuario.usuario_nombre_usuario }}</td>
-                        <td>{{ usuario.usuario_fecha}}</td>
-                        <td>{{ usuario.usuario_hora}}</td>
-                        <td>{{ usuario.usuario_duracion}}</td>
                         <td>
                             <a name="" id="" class="btn" href="{% url 'editar_usuario' usuario.usuario_id%}" role="button">
                                 <i class="fas fa-edit"></i> Editar
