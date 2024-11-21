@@ -9,7 +9,7 @@ from .forms import *
 def home(request):
     return render(request, 'home.html')
 
-# USUARIOS
+# ----- USUARIOS -----
 def usuarios(request):
     usuarios = Usuario.objects.all()
     return render(request, 'usuarios/index.html', {'usuarios': usuarios})
@@ -38,7 +38,7 @@ def eliminar_usuario(request, usuario_id):
     return redirect('usuarios')
 
 
-# TICKETS
+# ----- TICKETS -----
 def tickets(request):
     tickets = Ticket.objects.all()
     return render(request, 'tickets/index.html', {'tickets': tickets})
@@ -50,8 +50,8 @@ def crear_ticket(request):
         return redirect('tickets')
     return render(request, 'tickets/crear.html', {'formulario':formulario})
 
-def editar_ticket(request, ticket_nombre):
-    ticket = get_object_or_404(Ticket, ticket_nombre=ticket_nombre)
+def editar_ticket(request, ticket_id):
+    ticket = get_object_or_404(Ticket, ticket_id=ticket_id)
     if request.method == 'POST':
         formulario = TicketForm(request.POST, request.FILES, instance=ticket)
         if formulario.is_valid():
@@ -61,8 +61,8 @@ def editar_ticket(request, ticket_nombre):
         formulario = TicketForm(instance=ticket)  
     return render(request, 'tickets/editar.html', {'formulario': formulario})
 
-def eliminar_ticket(request, ticket_nombre):
-    ticket = ticket.objects.get(ticket_nombre = ticket_nombre)
+def eliminar_ticket(request, ticket_id):
+    ticket = ticket.objects.get(ticket_id = ticket_id)
     ticket.delete()
     return redirect('tickets')
     
