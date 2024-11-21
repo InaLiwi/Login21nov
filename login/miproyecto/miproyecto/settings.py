@@ -76,18 +76,18 @@ WSGI_APPLICATION = 'miproyecto.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bdlogin100',
+        'NAME': 'devscurico',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '10.16.1.53',
+        'HOST': 'https://10c7-200-91-9-175.ngrok-free.app',
         'PORT': '3306',
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
