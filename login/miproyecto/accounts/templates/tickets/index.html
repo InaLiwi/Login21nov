@@ -6,54 +6,55 @@
 
 {% for group in user.groups.all %}
 {% if group.name == "trabajadores" %}
-<div class="card mt-5">
-    <div class="card-header">
-        <a name="" id="" class="btn btn-outline-success" href="{% url 'crear_ticket' %}" role="button">
-            <i class="fas fa-plus"></i> Nuevo ticket
-        </a>
-    </div>
-
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">ID ticket</th>
-                        <th scope="col">Usuario</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Prioridad</th>
-                        <th scope="col">Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ticket in tickets %}
-                    <tr class="">
-                        <td scope="row">{{ ticket.ticket_id }}</td>
-                        <td>{{ ticket.ticket_numero_cliente }}</td>
-                        <td>{{ ticket.ticket_fecha}}</td>
-                        <td>{{ ticket.ticket_prioridad}}</td>
-                        <td>{{ ticket.ticket_descripcion}}</td>
-                        <td>
-                            <a name="" id="" class="btn" href="{% url 'editar_ticket' ticket.ticket_id%}" role="button">
-                                <i class="fas fa-edit"></i> Editar
-                            </a>
-                            <a name="" id="" class="btn" href="{% url 'eliminar_ticket' ticket.ticket_id %}" role="button">
-                                <i class="fas fa-trash-alt"></i> Eliminar
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    <div class="card-footer text-muted"></div>
-    </div>
-    {% else %}
-    <h1> ¡Bienvenido! </h1> <br><br>
+<h1> ¡Bienvenido! </h1> <br><br>
     <h2> Haga un ticket nuevo, para que le atendamos cuanto antes: </h2>
     <br> <a name="" id="" class="btn btn-outline-success" href="{% url 'crear_ticket' %}" role="button">
         <i class="fas fa-plus"></i> Nuevo ticket
     </a>
+
+    {% else %}
+    <div class="card mt-5">
+        <div class="card-header">
+            <a name="" id="" class="btn btn-outline-success" href="{% url 'crear_ticket' %}" role="button">
+                <i class="fas fa-plus"></i> Nuevo ticket
+            </a>
+        </div>
+    
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID ticket</th>
+                            <th scope="col">Usuario</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Prioridad</th>
+                            <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ticket in tickets %}
+                        <tr class="">
+                            <td scope="row">{{ ticket.ticket_id }}</td>
+                            <td>{{ ticket.ticket_numero_cliente }}</td>
+                            <td>{{ ticket.ticket_fecha}}</td>
+                            <td>{{ ticket.ticket_prioridad}}</td>
+                            <td>{{ ticket.ticket_descripcion}}</td>
+                            <td>
+                                <a name="" id="" class="btn" href="{% url 'editar_ticket' ticket.ticket_id%}" role="button">
+                                    <i class="fas fa-edit"></i> Editar
+                                </a>
+                                <a name="" id="" class="btn" href="{% url 'eliminar_ticket' ticket.ticket_id %}" role="button">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <div class="card-footer text-muted"></div>
+        </div>
 
    
 </div>

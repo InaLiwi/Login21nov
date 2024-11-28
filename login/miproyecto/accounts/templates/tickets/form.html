@@ -1,37 +1,103 @@
-<div class="card mt-5">
-    <div class="card-header">
-        <h4>Formulario de Tickets</h4>
-    </div>
-    <div class="card-body">
-        <form enctype="multipart/form-data" method="post" class="mt-3">
-            {% csrf_token %}
-            {% for campo in formulario %}
-            <div class="mb-3">
-                <label for="{{campo.id}}" class="form-label">{{campo.label}}</label>
-                <input 
-                    type="{{campo.field.widget.input_type}}" 
-                    class="form-control {% if campo.errors %}is-invalid{% endif %}"
-                    name="{{campo.name}}" 
-                    id="{{campo.id}}" 
-                    placeholder="{{campo.label}}" 
-                    required
-                />
-                {% if campo.errors %}
-                <div class="invalid-feedback">
-                    {{ campo.errors }}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-ticket-alt me-2"></i>Crear Nuevo Ticket</h4>
                 </div>
-                {% endif %}
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        {% for campo in formulario %}
+                        <div class="mb-3">
+                            <label for="{{campo.id}}" class="form-label">{{campo.label}}</label>
+                            {% if campo.field.widget.input_type == "file" %}
+                                <input 
+                                    type="{{campo.field.widget.input_type}}" 
+                                    class="form-control {% if campo.errors %}is-invalid{% endif %}"
+                                    name="{{campo.name}}" 
+                                    id="{{campo.id}}" 
+                                    {% if campo.field.required %}required{% endif %}
+                                />
+                            {% else %}
+                                <input 
+                                    type="{{campo.field.widget.input_type}}" 
+                                    class="form-control {% if campo.errors %}is-invalid{% endif %}"
+                                    name="{{campo.name}}" 
+                                    id="{{campo.id}}" 
+                                    placeholder="{{campo.label}}" 
+                                    {% if campo.field.required %}required{% endif %}
+                                />
+                            {% endif %}
+                            {% if campo.errors %}
+                            <div class="invalid-feedback">
+                                {{ campo.errors }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-md-4 mb-2">
+                                <a class="btn btn-secondary w-100" href="{% url 'tickets' %}">
+                                    <i class="fas fa-times me-2"></i>Cancelar
+                                </a>  
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <button type="reset" class="btn btn-warning w-100">
+                                    <i class="fas fa-undo me-2"></i>Borrar cambios
+                                </button>
+                            </div>
+                            <div class="col-md-4 mb-2">
+                                <button type="submit" class="btn btn-success w-100">
+                                    <i class="fas fa-save me-2"></i>Guardar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <i class="fas fa-info-circle me-2"></i>Complete todos los campos requeridos
+                </div>
             </div>
-            {% endfor %}
-            
-            <div class="row justify-content-evenly">
-                <a class="btn col-3" href="{% url 'tickets' %}" role="button"> Cancelar </a>  
-                <input class="btn col-3" type="reset" value="Borrar cambios"/>
-                <input class="btn col-3" type="submit" value="Guardar"/>
-            </div>
-        </form>
-    </div>
-    <div class="card-footer text-muted">
-        ¡Formulario listo para completar!
+        </div>
     </div>
 </div>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 1rem;
+        transition: all 0.3s ease-in-out;
+    }
+    .card:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15)!important;
+    }
+    .card-header {
+        border-top-left-radius: 1rem !important;
+        border-top-right-radius: 1rem !important;
+    }
+    .btn {
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,.15);
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Validación del formulario
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+    }, false);
+});
+</script>

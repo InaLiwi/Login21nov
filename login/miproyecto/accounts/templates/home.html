@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio{% endblock %}
+{% block title %}Inicio - Devscurico{% endblock %}
 
 {% block contenido %}
 <div class="container mt-5">
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
-            <div class="card shadow-sm">
+            <div class="card shadow">
                 <div class="card-body">
                     <h1 class="card-title text-center mb-4">Bienvenido, {{ user.username }}!</h1>
                     <div class="alert alert-info" role="alert">
-                        <i class="fas fa-info-circle me-2"></i>Este es el contenido de la página de inicio.
+                        <i class="fas fa-info-circle me-2"></i>Bienvenido al sistema de gestión de tickets de Devscurico.
                     </div>
                     
                     <div id="userGroups" class="mt-4">
                         {% for group in user.groups.all %}
-                            <div class="card mb-3">
-                                <div class="card-header">
+                            <div class="card mb-3 group-card">
+                                <div class="card-header bg-primary text-white">
                                     <h3 class="mb-0">
                                         <i class="fas fa-users me-2"></i>Grupo: {{ group.name }}
                                     </h3>
@@ -27,27 +27,31 @@
                                             <i class="fas fa-user-shield me-2"></i>Usted es administrador
                                         </p>
                                         <div class="admin-actions mt-3">
-                                            <button class="btn btn-primary me-2">
+                                            <a href="#" class="btn btn-primary me-2">
                                                 <i class="fas fa-cog me-2"></i>Configuración
-                                            </button>
-                                            <button class="btn btn-info">
+                                            </a>
+                                            <a href="#" class="btn btn-info">
                                                 <i class="fas fa-chart-bar me-2"></i>Estadísticas
-                                            </button>
+                                            </a>
                                         </div>
                                     {% else %}
                                         <p class="text-muted">
-                                            <i class="fas fa-user me-2"></i>Usted no es administrador
+                                            <i class="fas fa-user me-2"></i>Usted es miembro del equipo
                                         </p>
                                         <div class="user-actions mt-3">
-                                            <button class="btn btn-secondary me-2">
+                                            <a href="#" class="btn btn-secondary me-2">
                                                 <i class="fas fa-envelope me-2"></i>Mensajes
-                                            </button>
-                                            <button class="btn btn-outline-primary">
+                                            </a>
+                                            <a href="#" class="btn btn-outline-primary">
                                                 <i class="fas fa-user-edit me-2"></i>Editar Perfil
-                                            </button>
+                                            </a>
                                         </div>
                                     {% endif %}
                                 </div>
+                            </div>
+                        {% empty %}
+                            <div class="alert alert-warning" role="alert">
+                                <i class="fas fa-exclamation-triangle me-2"></i>No perteneces a ningún grupo. Contacta con un administrador.
                             </div>
                         {% endfor %}
                     </div>
@@ -57,9 +61,25 @@
     </div>
 </div>
 
+<style>
+    .group-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+    .group-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .btn {
+        transition: all 0.3s ease;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Add animation to user groups
     const userGroups = document.getElementById('userGroups');
     if (userGroups) {
         userGroups.style.opacity = '0';
@@ -70,6 +90,23 @@ document.addEventListener('DOMContentLoaded', function() {
             userGroups.style.transform = 'translateY(0)';
         }, 300);
     }
+
+    // Añadir efecto de ondulación a los botones
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            let ripple = document.createElement('span');
+            ripple.classList.add('ripple');
+            this.appendChild(ripple);
+            let x = e.clientX - e.target.offsetLeft;
+            let y = e.clientY - e.target.offsetTop;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
 });
 </script>
 {% endblock %}
