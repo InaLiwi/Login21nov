@@ -4,18 +4,18 @@ from django.db import models
 #    libro_imagen = models.ImageField(upload_to='imagenes/', verbose_name='Imagennn', null=True, blank=True)
 class Usuario(models.Model):
     usuario_rol = models.CharField(primary_key=True, max_length=50, verbose_name='Especifique el rol: ')
-    usuario_nombre_usuario = models.CharField(max_length=50, verbose_name='Nombre usuario')
+    '''usuario_nombre_usuario = models.CharField(max_length=50, verbose_name='Nombre usuario')
     
     def __str__(self):
         fila = "Usuario: " + self.usuario_nombre_usuario + " || " + "Rol: " + self.usuario_rol
-        return fila
+        return fila'''
     
 
 
 class Ticket(models.Model):
     ticket_id = models.AutoField(primary_key=True)
-    ticket_numero_cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE, max_length=20, verbose_name='Nombre usuario')
-    #ticket_numero_cliente = models.CharField(max_length=50, verbose_name='Nombre usuario')
+    #ticket_numero_cliente = models.ForeignKey(Usuario, on_delete=models.CASCADE, max_length=20, verbose_name='Nombre usuario')
+    ticket_numero_cliente = models.CharField(max_length=50, verbose_name='Nombre usuario')
     ticket_fecha = models.DateField(verbose_name='Fecha')
     ticket_prioridad = models.CharField(max_length=20, verbose_name='Prioridad (Alta-Media-Baja): ')
     ticket_descripcion = models.CharField(max_length=100, verbose_name='Descripción: ')

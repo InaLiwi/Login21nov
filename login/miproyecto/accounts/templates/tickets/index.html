@@ -4,12 +4,15 @@
 
 {% block contenido %} 
 
+{% for group in user.groups.all %}
+{% if group.name == "trabajadores" %}
 <div class="card mt-5">
     <div class="card-header">
         <a name="" id="" class="btn btn-outline-success" href="{% url 'crear_ticket' %}" role="button">
-            <i class="fas fa-plus"></i> Nueva ticket
+            <i class="fas fa-plus"></i> Nuevo ticket
         </a>
     </div>
+
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover">
@@ -43,8 +46,18 @@
                 </tbody>
             </table>
         </div>
-    </div>
     <div class="card-footer text-muted"></div>
+    </div>
+    {% else %}
+    <h1> ¡Bienvenido! </h1> <br><br>
+    <h2> Haga un ticket nuevo, para que le atendamos cuanto antes: </h2>
+    <br> <a name="" id="" class="btn btn-outline-success" href="{% url 'crear_ticket' %}" role="button">
+        <i class="fas fa-plus"></i> Nuevo ticket
+    </a>
+
+   
 </div>
+{% endif %}
+{% endfor %}
 
 {% endblock %}
